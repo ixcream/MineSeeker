@@ -1,19 +1,21 @@
 package ca.cmpt276.as3;
 
-
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class MenuActivity extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity implements
+View.OnClickListener {
     Button btnPlay;
+    Button btnOptions;
+    Button btnHelp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,22 +28,37 @@ public class MenuActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Main menu");
 
         // Buttons
-//        btnPlay = findViewById(R.id.btnPlay);
-//        btnPlay.setOnClickListener((View.OnClickListener) this);
-//        findViewById(R.id.btnOptions).setOnClickListener(v -> onRegisterClick());
-//        findViewById(R.id.btnHelp).setOnClickListener(v -> onRegisterClick());
+        btnPlay = findViewById(R.id.btnPlay);
+        btnOptions = findViewById(R.id.btnOptions);
+        btnHelp = findViewById(R.id.btnHelp);
+
+        btnPlay.setOnClickListener((View.OnClickListener) this);
+        btnOptions.setOnClickListener((View.OnClickListener) this);
+        btnHelp.setOnClickListener((View.OnClickListener) this);
     }
 
-//    @Override
-//    public void onClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.btnPlay:
-//                Toast.makeText(this, "play", Toast.LENGTH_SHORT).show();
-//                break;
-//            default:
-//                break;
-//        }
-//    };
+    @Override
+    public void onClick(View v) {
+        Intent play = new Intent(MenuActivity.this, GameActivity.class);
+        Intent options = new Intent(MenuActivity.this, OptionsActivity.class);
+        Intent help = new Intent(MenuActivity.this, HelpActivity.class);
+        switch (v.getId()) {
+            case R.id.btnPlay:
+                Toast.makeText(this, "play", Toast.LENGTH_SHORT).show();
+                startActivity(play);
+                break;
+            case R.id.btnOptions:
+                Toast.makeText(this, "options", Toast.LENGTH_SHORT).show();
+                startActivity(options);
+                break;
+            case R.id.btnHelp:
+                Toast.makeText(this, "help", Toast.LENGTH_SHORT).show();
+                startActivity(help);
+                break;
+            default:
+                break;
+        }
+    };
 
 
     public static Intent makeIntent(Context context) {

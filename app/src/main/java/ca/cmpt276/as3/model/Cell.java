@@ -1,11 +1,11 @@
 package ca.cmpt276.as3.model;
 
 public class Cell {
-    // Variables - TODO: add a good name for mines left in row/column
+    // Variables
     private int row;
     private int column;
+    private int numberOfHiddenMines;
     private boolean isMine;
-
 
 
     // Constructor
@@ -27,7 +27,6 @@ public class Cell {
     }
 
     // Setter methods
-
     public void setRow(int row) {
         this.row = row;
     }

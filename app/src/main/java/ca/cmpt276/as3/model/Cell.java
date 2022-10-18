@@ -7,6 +7,7 @@ public class Cell {
     private boolean isMine;
 
 
+
     // Constructor
     public Cell() {
         this.row = -1;

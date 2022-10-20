@@ -40,6 +40,13 @@ public class Cell {
     public void setNumberOfHiddenMines(int numberOfHiddenMines) {
         this.numberOfHiddenMines = numberOfHiddenMines;
     }
+    public void increaseNumOfHiddenMines() {
+        this.numberOfHiddenMines = numberOfHiddenMines + 1;
+    }
+
+    public void decreaseNumOfHiddenMines() {
+        this.numberOfHiddenMines = numberOfHiddenMines - 1;
+    }
     public void setMine(boolean mine) {
         isMine = mine;
     }

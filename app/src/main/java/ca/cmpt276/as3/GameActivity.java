@@ -13,6 +13,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
 
+import ca.cmpt276.as3.model.Grid;
 import ca.cmpt276.as3.model.Options;
 
 public class GameActivity extends AppCompatActivity {
@@ -21,6 +22,7 @@ public class GameActivity extends AppCompatActivity {
 
     // Initialization
     Button[][] totalButtons;
+    Grid grid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,9 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         options.setRows(4);
         options.setColumns(6);
+        options.setTotalMines(6);
+
+        grid = new Grid(options.getRows(), options.getColumns(), options.getTotalMines());
 
         totalButtons = new Button[options.getRows()][options.getColumns()];
 
@@ -62,7 +67,6 @@ public class GameActivity extends AppCompatActivity {
 
                 // Set Layout
                 Button button = new Button(this);
-                button.setText("" + rows + ", " + columns);
                 button.setLayoutParams(new TableRow.LayoutParams(
                         TableRow.LayoutParams.MATCH_PARENT,
                         TableRow.LayoutParams.MATCH_PARENT,
@@ -84,23 +88,33 @@ public class GameActivity extends AppCompatActivity {
         Button button = totalButtons[row][column];
         Toast.makeText(getBaseContext(), "You pressed " + row + ", " + column, Toast.LENGTH_SHORT).show();
 
-        button.setBackgroundResource(R.drawable.box);
-
         // Lock button sizes
         lockButtonSize();
 
-        // Scale image properly
-        int newWidth = button.getWidth();
-        int newHeight = button.getHeight();
-        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.box);
-        Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
-        Resources resource = getResources();
-        button.setBackground(new BitmapDrawable(resource, scaledBitmap));
+        // If isMine = true, show mine and decrement totalMines
+        if (grid.cellAtCoord(row, column).isMine()) {
+            button.setBackgroundResource(R.drawable.box);
 
+            // Scale image properly
+            int newWidth = button.getWidth();
+            int newHeight = button.getHeight();
+            Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.box);
+            Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
+            Resources resource = getResources();
+            button.setBackground(new BitmapDrawable(resource, scaledBitmap));
 
-        // If isMine = true, button.setBackgroundResource(R.drawable."name of mine img");
-        // Else make it show the number (scan)
+            // Update mines at grid cell
+            grid.cellAtCoord(row, column).setMine(false);
+            grid.cellAtCoord(row, column).decreaseNumOfHiddenMines();
+            grid.decreaseNumOfMines(row, column);
+            // ifscanned, settext o(n)
+        }
+        // Else, scan cell and display # of mines in row/column
+        else {
 
+            button.setText(Integer.toString(grid.cellAtCoord(row, column).getNumberOfHiddenMines()));
+
+        }
     }
 
     // Locks size of buttons

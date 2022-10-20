@@ -13,8 +13,6 @@ public class Options {
     private static Options instance;
     private Options() {
         // Private call to prevent instantiation
-        this.rows = 4;
-        this.columns = 5;
     }
 
     public static Options getInstance() {

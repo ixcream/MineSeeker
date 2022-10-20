@@ -8,7 +8,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -20,25 +19,26 @@ public class GameActivity extends AppCompatActivity {
     // Get Instance
     Options options = Options.getInstance();
 
-    Button buttons[][] = new Button[options.getRows()][options.getColumns()];
+    // Initialization
+    Button[][] totalButtons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        options.setRows(4);
+        options.setColumns(6);
 
-
-
+        totalButtons = new Button[options.getRows()][options.getColumns()];
 
 
         // Toolbar
         Toolbar toolbar = findViewById(R.id.tbGame);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Welcome screen");
+        getSupportActionBar().setTitle("Play Game");
 
         // Populate Dynamic Buttons
         populateButtons();
-
 
 
     }
@@ -60,7 +60,9 @@ public class GameActivity extends AppCompatActivity {
                 final int FINAL_ROW = rows;
                 final int FINAL_COLUMN = columns;
 
+                // Set Layout
                 Button button = new Button(this);
+                button.setText("" + rows + ", " + columns);
                 button.setLayoutParams(new TableRow.LayoutParams(
                         TableRow.LayoutParams.MATCH_PARENT,
                         TableRow.LayoutParams.MATCH_PARENT,
@@ -69,20 +71,23 @@ public class GameActivity extends AppCompatActivity {
                 // Prevent clipping
                 button.setPadding(0, 0, 0, 0);
 
+                // Set up buttons when clicked
                 button.setOnClickListener(v -> gridButtonClicked(FINAL_ROW, FINAL_COLUMN));
-
                 tableRow.addView(button);
-                buttons[rows][columns] = button;
+                totalButtons[rows][columns] = button;
             }
-
         }
-
     }
 
     // Button helper method
     private void gridButtonClicked(int row, int column) {
-        Button button = buttons[row][column];
+        Button button = totalButtons[row][column];
+        Toast.makeText(getBaseContext(), "You pressed " + row + ", " + column, Toast.LENGTH_SHORT).show();
+
         button.setBackgroundResource(R.drawable.box);
+
+        // Lock button sizes
+        lockButtonSize();
 
         // Scale image properly
         int newWidth = button.getWidth();
@@ -93,8 +98,25 @@ public class GameActivity extends AppCompatActivity {
         button.setBackground(new BitmapDrawable(resource, scaledBitmap));
 
 
-        // If mine, button.setBackgroundResource(R.drawable."name of mine img");
-        // Else make it show the number
+        // If isMine = true, button.setBackgroundResource(R.drawable."name of mine img");
+        // Else make it show the number (scan)
 
+    }
+
+    // Locks size of buttons
+    private void lockButtonSize() {
+        for (int rowCell = 0; rowCell < options.getRows(); rowCell++) {
+            for (int columnCell = 0; columnCell < options.getColumns(); columnCell++) {
+                Button button = totalButtons[rowCell][columnCell];
+
+                int width = button.getWidth();
+                button.setMinWidth(width);
+                button.setMaxWidth(width);
+
+                int height = button.getHeight();
+                button.setMinHeight(height);
+                button.setMaxHeight(height);
+            }
+        }
     }
 }

@@ -3,10 +3,10 @@ package ca.cmpt276.as3.model;
 import java.util.Random;
 
 public class Grid {
-    private int row;
-    private int column;
-    private int numOfMines;
-    private Cell[][] grid;
+    private final int row;
+    private final int column;
+    private final int numOfMines;
+    private final Cell[][] grid;
 
     public Grid(int rows, int columns, int mines) {
         this.row = rows;
@@ -16,17 +16,23 @@ public class Grid {
         this.grid = new Cell[row][column];
 
         // initialize all the cells
+        initializeCell();
+
+        // Generate mines
+        minePlacer();
+    }
+
+    // Cell initialization
+    private void initializeCell() {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
+                grid[i][j] = new Cell();
                 grid[i][j].setRowCell(i);
                 grid[i][j].setColumnCell(j);
                 grid[i][j].setNumberOfHiddenMines(0);
                 grid[i][j].setMine(false);
             }
         }
-
-        // Generate mines
-        minePlacer();
     }
 
     public Cell cellAtCoord(int i, int j) {

@@ -8,11 +8,10 @@ public class Grid {
     private int numOfMines;
     private Cell[][] grid;
 
-    // FOR NOW, WILL CREATE A 4x6 GRID WITH 6 MINES
-    public Grid() {
-        this.row = 4;
-        this.column = 6;
-        this.numOfMines = 6;
+    public Grid(int rows, int columns, int mines) {
+        this.row = rows;
+        this.column = columns;
+        this.numOfMines = mines;
 
         this.grid = new Cell[row][column];
 

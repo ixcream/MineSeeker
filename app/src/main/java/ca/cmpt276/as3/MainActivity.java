@@ -8,13 +8,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import androidx.appcompat.widget.Toolbar;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MainActivity extends AppCompatActivity {
+    private TextView title;
+    private ImageView apple1;
+    private ImageView apple2;
+    private Timer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,18 +37,23 @@ public class MainActivity extends AppCompatActivity {
         // Button to main menu
         findViewById(R.id.btnMainMenu).setOnClickListener(v -> onRegisterClick());
 
-        TextView title = findViewById(R.id.tvTitle);
-        ImageView apple1 = findViewById(R.id.imgApple1);
-        ImageView apple2 = findViewById(R.id.imgApple2);
+        title = findViewById(R.id.tvTitle);
+        apple1 = findViewById(R.id.imgApple1);
+        apple2 = findViewById(R.id.imgApple2);
 
         // ANIMATION (cite: https://github.com/daimajia/AndroidViewAnimations)
         fadeAnimation(title);
         bounceAnimation(apple1);
         bounceAnimation(apple2);
 
-
-
-
+        //4 SECOND TIMER
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                startMainMenu();
+            }
+        }, 4000);
     }
 
     private void fadeAnimation(TextView text) {
@@ -56,9 +69,13 @@ public class MainActivity extends AppCompatActivity {
                 .playOn(img);
     }
 
-    private void onRegisterClick() {
-        // Launch main menu
+    private void startMainMenu() {
         Intent intent = MenuActivity.makeIntent(MainActivity.this);
         startActivity(intent);
+    }
+
+    private void onRegisterClick() {
+        // Launch main menu
+        startMainMenu();
     }
 }

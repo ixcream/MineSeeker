@@ -15,6 +15,9 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+
 import ca.cmpt276.as3.model.Grid;
 import ca.cmpt276.as3.model.Options;
 
@@ -132,7 +135,6 @@ public class GameActivity extends AppCompatActivity {
         else {
             button.setText(Integer.toString(grid.cellAtCoord(row, column).getNumberOfHiddenMines()));
 
-
             // Update total scan
             if (!grid.cellAtCoord(row, column).isScanned()) {
                 numOfScans++;
@@ -166,6 +168,7 @@ public class GameActivity extends AppCompatActivity {
             if (grid.cellAtCoord(row, i).isScanned()) {
                 totalButtons[row][i].setText(Integer.toString(grid.cellAtCoord(row, i).getNumberOfHiddenMines()));
             }
+            btnAnimation(totalButtons[row][i]);
         }
 
         // Go through entire row
@@ -173,7 +176,14 @@ public class GameActivity extends AppCompatActivity {
             if (grid.cellAtCoord(i, column).isScanned()) {
                 totalButtons[i][column].setText(Integer.toString(grid.cellAtCoord(i, column).getNumberOfHiddenMines()));
             }
+            btnAnimation(totalButtons[i][column]);
         }
+    }
+
+    private void btnAnimation(Button btn) {
+        YoYo.with(Techniques.Flash)
+                .duration(300)
+                .playOn(btn);
     }
 
     private void winMsg() {

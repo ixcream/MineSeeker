@@ -2,6 +2,7 @@ package ca.cmpt276.as3;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 

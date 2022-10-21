@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -39,7 +40,7 @@
         app:layout_constraintVertical_bias="0.826" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvTitle"
         android:layout_width="477dp"
         android:layout_height="83dp"
         android:layout_marginTop="56dp"
@@ -52,5 +53,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tbWelcome" />
+
+    <ImageView
+        android:id="@+id/imgApple1"
+        android:layout_width="286dp"
+        android:layout_height="188dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/apple" />
+
+    <ImageView
+        android:id="@+id/imgApple2"
+        android:layout_width="286dp"
+        android:layout_height="188dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/apple" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

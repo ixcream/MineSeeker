@@ -15,11 +15,11 @@
         android:layout_width="280dp"
         android:layout_height="216dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.081"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/boardTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/boardTitle"
         app:layout_constraintTop_toBottomOf="@+id/boardTitle"
-        app:layout_constraintVertical_bias="0.18">
+        app:layout_constraintVertical_bias="0.168">
 
         <RadioButton
             android:id="@+id/size1"
@@ -45,9 +45,9 @@
         android:layout_width="285dp"
         android:layout_height="217dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.876"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/minesTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/minesTitle"
         app:layout_constraintTop_toBottomOf="@+id/minesTitle"
         app:layout_constraintVertical_bias="0.17">
 

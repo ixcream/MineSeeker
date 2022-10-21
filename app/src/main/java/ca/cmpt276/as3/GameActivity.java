@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 import ca.cmpt276.as3.model.Grid;
 import ca.cmpt276.as3.model.Options;
@@ -21,6 +22,10 @@ public class GameActivity extends AppCompatActivity {
 
     // Initialization
     Button[][] totalButtons;
+    TextView totalScans;
+    TextView minesFound;
+    int numOfScans;
+    int numOfMinesFound;
     Grid grid;
 
     @Override
@@ -31,6 +36,8 @@ public class GameActivity extends AppCompatActivity {
         grid = new Grid(options.getRows(), options.getColumns(), options.getTotalMines());
 
         totalButtons = new Button[options.getRows()][options.getColumns()];
+        totalScans = findViewById(R.id.totalScans);
+        minesFound = findViewById(R.id.minesFound);
 
 
         // Toolbar
@@ -45,6 +52,10 @@ public class GameActivity extends AppCompatActivity {
     // Creates dynamic buttons
     private void populateButtons() {
         TableLayout grid = findViewById(R.id.buttonGrid);
+        numOfScans = 0;
+        numOfMinesFound = 0;
+        minesFound.setText("Mines Found: " + numOfMinesFound +" of " + options.getTotalMines());
+
 
         for (int rows = 0; rows < options.getRows(); rows++) {
             TableRow tableRow = new TableRow(this);
@@ -79,6 +90,7 @@ public class GameActivity extends AppCompatActivity {
     // Button helper method
     private void gridButtonClicked(int row, int column) {
         Button button = totalButtons[row][column];
+
         // TODO - get rid of this when hand in, was using this for testing
         // and might again later
         // Toast.makeText(getBaseContext(), "You pressed " + row + ", " + column, Toast.LENGTH_SHORT).show();
@@ -89,6 +101,7 @@ public class GameActivity extends AppCompatActivity {
         // If isMine = true, show mine and decrement totalMines
         if (grid.cellAtCoord(row, column).isMine()) {
             button.setBackgroundResource(R.drawable.apple);
+            numOfMinesFound++;
 
             // Scale image properly
             int newWidth = button.getWidth();
@@ -102,13 +115,18 @@ public class GameActivity extends AppCompatActivity {
             grid.cellAtCoord(row, column).setMine(false);
             grid.decreaseNumOfMines(row, column);
 
-            // Update scanned cells number
+            // Update scanned cells number and mines found text
             scannedTextCell(row, column);
+            minesFound.setText("Mines Found: " + numOfMinesFound +" of " + options.getTotalMines());
         }
         // Else, scan cell and display # of mines in row/column
         else {
             button.setText(Integer.toString(grid.cellAtCoord(row, column).getNumberOfHiddenMines()));
             grid.cellAtCoord(row, column).setScanned(true);
+
+            // Update total scan
+            numOfScans++;
+            totalScans.setText("Total scans: " + numOfScans);
         }
     }
 

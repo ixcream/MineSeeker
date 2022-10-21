@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+// Main Menu
 public class MenuActivity extends AppCompatActivity implements
 View.OnClickListener {
     Button btnPlay;
@@ -32,9 +33,9 @@ View.OnClickListener {
         btnOptions = findViewById(R.id.btnOptions);
         btnHelp = findViewById(R.id.btnHelp);
 
-        btnPlay.setOnClickListener((View.OnClickListener) this);
-        btnOptions.setOnClickListener((View.OnClickListener) this);
-        btnHelp.setOnClickListener((View.OnClickListener) this);
+        btnPlay.setOnClickListener(this);
+        btnOptions.setOnClickListener(this);
+        btnHelp.setOnClickListener(this);
     }
 
     @Override

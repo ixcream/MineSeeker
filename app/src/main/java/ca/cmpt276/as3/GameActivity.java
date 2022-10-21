@@ -28,9 +28,9 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        options.setRows(4);
-        options.setColumns(6);
-        options.setTotalMines(6);
+        options.setRows(7);
+        options.setColumns(10);
+        options.setTotalMines(20);
 
         grid = new Grid(options.getRows(), options.getColumns(), options.getTotalMines());
 
@@ -44,8 +44,6 @@ public class GameActivity extends AppCompatActivity {
 
         // Populate Dynamic Buttons
         populateButtons();
-
-
     }
 
     // Creates dynamic buttons
@@ -105,15 +103,15 @@ public class GameActivity extends AppCompatActivity {
 
             // Update mines at grid cell
             grid.cellAtCoord(row, column).setMine(false);
-            grid.cellAtCoord(row, column).decreaseNumOfHiddenMines();
             grid.decreaseNumOfMines(row, column);
-            // ifscanned, settext o(n)
+
+            // Update scanned cells number
+            scannedTextCell(row, column);
         }
         // Else, scan cell and display # of mines in row/column
         else {
-
             button.setText(Integer.toString(grid.cellAtCoord(row, column).getNumberOfHiddenMines()));
-
+            grid.cellAtCoord(row, column).setScanned(true);
         }
     }
 
@@ -130,6 +128,23 @@ public class GameActivity extends AppCompatActivity {
                 int height = button.getHeight();
                 button.setMinHeight(height);
                 button.setMaxHeight(height);
+            }
+        }
+    }
+
+    // Update scanned cell text helper
+    private void scannedTextCell(int row, int column) {
+        // Go through entire column
+        for (int i = 0; i < options.getColumns(); i++) {
+            if (grid.cellAtCoord(row, i).isScanned()) {
+                totalButtons[row][i].setText(Integer.toString(grid.cellAtCoord(row, i).getNumberOfHiddenMines()));
+            }
+        }
+
+        // Go through entire row
+        for (int i = 0; i < options.getRows(); i++) {
+            if (grid.cellAtCoord(i, column).isScanned()) {
+                totalButtons[i][column].setText(Integer.toString(grid.cellAtCoord(i, column).getNumberOfHiddenMines()));
             }
         }
     }

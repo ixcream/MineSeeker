@@ -2,6 +2,7 @@ package ca.cmpt276.as3.model;
 
 import java.util.Random;
 
+// Stores a grid of Cells
 public class Grid {
     private final int row;
     private final int column;
@@ -31,6 +32,7 @@ public class Grid {
                 grid[i][j].setColumnCell(j);
                 grid[i][j].setNumberOfHiddenMines(0);
                 grid[i][j].setMine(false);
+                grid[i][j].setScanned(false);
             }
         }
     }
@@ -55,12 +57,12 @@ public class Grid {
         }
 
         // increase all the cells in the row
-        for (int i = 0; i < curCol; i++) {
+        for (int i = 0; i < column; i++) {
             cellAtCoord(curRow, i).increaseNumOfHiddenMines();
         }
 
         // increase all the cells in the column
-        for (int i = 0; i < curRow; i++) {
+        for (int i = 0; i < row; i++) {
             cellAtCoord(i, curCol).increaseNumOfHiddenMines();
         }
     }
@@ -72,12 +74,12 @@ public class Grid {
         }
 
         // decrease all the cells in the row
-        for (int i = 0; i < curCol; i++) {
+        for (int i = 0; i < column; i++) {
             cellAtCoord(curRow, i).decreaseNumOfHiddenMines();
         }
 
         // decrease all the cells in the column
-        for (int i = 0; i < curRow; i++) {
+        for (int i = 0; i < row; i++) {
             cellAtCoord(i, curCol).decreaseNumOfHiddenMines();
         }
     }

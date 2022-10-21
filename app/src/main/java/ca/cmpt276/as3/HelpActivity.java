@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
+import android.widget.TextView;
 
 public class HelpActivity extends AppCompatActivity {
+    private TextView tvAuthors;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,5 +19,9 @@ public class HelpActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.tbHelp);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Help");
+
+        tvAuthors = findViewById(R.id.tvAuthors);
+        tvAuthors.setMovementMethod(LinkMovementMethod.getInstance());
+
     }
 }

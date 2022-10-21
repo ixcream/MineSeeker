@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView apple1;
     private ImageView apple2;
     private Timer timer;
+    private boolean isButtonClicked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +34,13 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.tbWelcome);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Apple Picker");
-
-        // Button to main menu
-        findViewById(R.id.btnMainMenu).setOnClickListener(v -> onRegisterClick());
-
         title = findViewById(R.id.tvTitle);
         apple1 = findViewById(R.id.imgApple1);
         apple2 = findViewById(R.id.imgApple2);
+        isButtonClicked = false;
+
+        // Button to main menu
+        findViewById(R.id.btnMainMenu).setOnClickListener(v -> onRegisterClick());
 
         // ANIMATION (cite: https://github.com/daimajia/AndroidViewAnimations)
         fadeAnimation(title);
@@ -51,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                startMainMenu();
+                if (!isButtonClicked) {
+                    startMainMenu();
+                }
             }
         }, 4000);
     }
@@ -72,10 +75,12 @@ public class MainActivity extends AppCompatActivity {
     private void startMainMenu() {
         Intent intent = MenuActivity.makeIntent(MainActivity.this);
         startActivity(intent);
+        finish();
     }
 
     private void onRegisterClick() {
         // Launch main menu
+        isButtonClicked = true;
         startMainMenu();
     }
 }

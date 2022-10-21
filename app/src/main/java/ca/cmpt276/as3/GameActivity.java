@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import com.google.gson.Gson;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -34,18 +36,17 @@ public class GameActivity extends AppCompatActivity {
     Grid grid;
     AlertDialog.Builder winMsg;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-
         grid = new Grid(options.getRows(), options.getColumns(), options.getTotalMines());
 
         totalButtons = new Button[options.getRows()][options.getColumns()];
         totalScans = findViewById(R.id.totalScans);
         minesFound = findViewById(R.id.minesFound);
         winMsg = new AlertDialog.Builder(this);
-
 
         // Toolbar
         Toolbar toolbar = findViewById(R.id.tbGame);
@@ -198,4 +199,8 @@ public class GameActivity extends AppCompatActivity {
                     }
                 }).show();
     }
+
+
+
+
 }

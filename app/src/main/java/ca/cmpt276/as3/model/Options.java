@@ -1,5 +1,7 @@
 package ca.cmpt276.as3.model;
 
+import android.graphics.Path;
+
 // Options Class stores settings from OptionsActivity for
 // use in GameActivity
 public class Options {
@@ -20,6 +22,10 @@ public class Options {
             instance = new Options();
         }
         return instance;
+    }
+
+    public static void setInstance(Options options) {
+        instance = options;
     }
 
     // Getter methods

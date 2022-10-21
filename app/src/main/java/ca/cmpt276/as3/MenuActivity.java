@@ -61,6 +61,10 @@ View.OnClickListener {
         }
     };
 
+    @Override
+    public void onBackPressed() {
+        finish();
+    };
 
     public static Intent makeIntent(Context context) {
         return new Intent(context, MenuActivity.class);

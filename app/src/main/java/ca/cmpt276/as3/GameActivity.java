@@ -122,11 +122,14 @@ public class GameActivity extends AppCompatActivity {
         // Else, scan cell and display # of mines in row/column
         else {
             button.setText(Integer.toString(grid.cellAtCoord(row, column).getNumberOfHiddenMines()));
-            grid.cellAtCoord(row, column).setScanned(true);
+
 
             // Update total scan
-            numOfScans++;
-            totalScans.setText("Total scans: " + numOfScans);
+            if (!grid.cellAtCoord(row, column).isScanned()) {
+                numOfScans++;
+                totalScans.setText("Total scans: " + numOfScans);
+                grid.cellAtCoord(row, column).setScanned(true);
+            }
         }
     }
 

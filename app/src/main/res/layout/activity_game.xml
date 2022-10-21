@@ -14,11 +14,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/imgGameBg"
+        android:layout_width="835dp"
+        android:layout_height="511dp"
+        android:tint="#8A000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/welcome_bg" />
+
     <TextView
         android:id="@+id/totalScans"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total Scans: 0"
+        android:text="@string/total_scans_0"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.12"
@@ -30,7 +44,10 @@
         android:id="@+id/minesFound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mines Found: 0 of "
+        android:text="@string/mines_found_0_of"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.118"

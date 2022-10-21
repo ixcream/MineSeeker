@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".OptionsActivity">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="787dp"
+        android:layout_height="488dp"
+        android:tint="#8B000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/welcome_bg" />
+
     <include
         android:id="@+id/tbOptions"
         layout="@layout/toolbar" />
@@ -25,19 +34,22 @@
             android:id="@+id/size1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="4 Rows x 6 Columns" />
+            android:text="@string/_4_rows_x_6_columns"
+            android:textColor="@color/white" />
 
         <RadioButton
             android:id="@+id/size2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="5 Rows x 10 Columns" />
+            android:text="@string/_5_rows_x_10_columns"
+            android:textColor="@color/white"/>
 
         <RadioButton
             android:id="@+id/size3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="6 Rows x 15 Columns" />
+            android:text="@string/_6_rows_x_15_columns"
+            android:textColor="@color/white"/>
     </RadioGroup>
 
     <RadioGroup
@@ -55,32 +67,39 @@
             android:id="@+id/Mines6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="6" />
+            android:text="@string/_6"
+            android:textColor="@color/white"/>
 
         <RadioButton
             android:id="@+id/Mines10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="10" />
+            android:text="@string/_10"
+            android:textColor="@color/white"/>
 
         <RadioButton
             android:id="@+id/Mines15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="15" />
+            android:text="@string/_15"
+            android:textColor="@color/white"/>
 
         <RadioButton
             android:id="@+id/Mines20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="20" />
+            android:text="@string/_20"
+            android:textColor="@color/white"/>
     </RadioGroup>
 
     <TextView
         android:id="@+id/minesTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Number of Mines"
+        android:text="@string/number_of_mines"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.678"
@@ -92,7 +111,10 @@
         android:id="@+id/boardTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Board Size"
+        android:text="@string/board_size"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.06"

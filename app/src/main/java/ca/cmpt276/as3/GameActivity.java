@@ -1,8 +1,10 @@
 package ca.cmpt276.as3;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -27,6 +29,7 @@ public class GameActivity extends AppCompatActivity {
     int numOfScans;
     int numOfMinesFound;
     Grid grid;
+    AlertDialog.Builder winMsg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,7 @@ public class GameActivity extends AppCompatActivity {
         totalButtons = new Button[options.getRows()][options.getColumns()];
         totalScans = findViewById(R.id.totalScans);
         minesFound = findViewById(R.id.minesFound);
+        winMsg = new AlertDialog.Builder(this);
 
 
         // Toolbar
@@ -118,6 +122,11 @@ public class GameActivity extends AppCompatActivity {
             // Update scanned cells number and mines found text
             scannedTextCell(row, column);
             minesFound.setText("Mines Found: " + numOfMinesFound +" of " + options.getTotalMines());
+
+            // Display winning message when user finds all mines
+            if (numOfMinesFound == options.getTotalMines()) {
+                winMsg();
+            }
         }
         // Else, scan cell and display # of mines in row/column
         else {
@@ -165,5 +174,17 @@ public class GameActivity extends AppCompatActivity {
                 totalButtons[i][column].setText(Integer.toString(grid.cellAtCoord(i, column).getNumberOfHiddenMines()));
             }
         }
+    }
+
+    private void winMsg() {
+        winMsg.setTitle("Congratulations")
+                .setMessage("You've found all the apples! Time to chomp!")
+                .setIcon(R.drawable.apple)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                }).show();
     }
 }

@@ -2,4 +2,10 @@
     <string name="app_name">as3</string>
     <string name="apple_picker">Apple Picker</string>
     <string name="main_menu">MAIN MENU</string>
+    <string name="author">Written by Max Zhang and Gahee Kim for Intro to Software Engineering
+        (<a href="https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt276/home">Cmpt 276 Homepage</a>) </string>
+    <string name="instructions">When playing Apple Picker, click on areas of the game to find your apples. If you don’t find an apple after clicking a button, you’ll start off a scan to count how many apples are in that button’s column and row. You can also click an apple to have it scan it’s row and column for other hidden apples.</string>
+    <string name="about_the_authors">About the Authors</string>
+    <string name="resources">Resources</string>
+    <string name="tvinstructions">Instructions</string>
 </resources>

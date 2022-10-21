@@ -59,6 +59,12 @@ public class MainActivity extends AppCompatActivity {
         }, 4000);
     }
 
+    @Override
+    public void onBackPressed() {
+        isButtonClicked = true;
+        finish();
+    };
+
     private void fadeAnimation(TextView text) {
         YoYo.with(Techniques.FadeIn)
                 .duration(2000)

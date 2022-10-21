@@ -140,6 +140,7 @@ public class GameActivity extends AppCompatActivity {
                 numOfScans++;
                 totalScans.setText("Total scans: " + numOfScans);
                 grid.cellAtCoord(row, column).setScanned(true);
+                scannedTextCell(row, column);
             }
         }
     }
@@ -182,7 +183,7 @@ public class GameActivity extends AppCompatActivity {
 
     private void btnAnimation(Button btn) {
         YoYo.with(Techniques.Flash)
-                .duration(300)
+                .duration(200)
                 .playOn(btn);
     }
 

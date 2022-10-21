@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">as3</string>
+    <string name="apple_picker">Apple Picker</string>
+    <string name="main_menu">MAIN MENU</string>
 </resources>

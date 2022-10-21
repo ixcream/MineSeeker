@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         // Toolbar
         Toolbar toolbar = findViewById(R.id.tbWelcome);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Welcome screen");
+        getSupportActionBar().setTitle("Apple Picker");
 
         // Button to main menu
         findViewById(R.id.btnMainMenu).setOnClickListener(v -> onRegisterClick());

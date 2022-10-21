@@ -2,48 +2,89 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/welcomeTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="&quot;Insert game name here&quot;"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/imgBg"
+        android:layout_width="732dp"
+        android:layout_height="585dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="4dp"
+        android:adjustViewBounds="false"
+        android:scaleType="center"
+        android:src="@drawable/welcome_bg"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.878"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.247" />
+        app:layout_constraintTop_toTopOf="@+id/tbWelcome" />
 
     <include
         android:id="@+id/tbWelcome"
-        layout="@layout/toolbar" />
+        layout="@layout/toolbar"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnMainMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MAIN MENU"
+        android:text="@string/main_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.934"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tbWelcome"
-        app:layout_constraintVertical_bias="0.892" />
+        app:layout_constraintVertical_bias="0.774" />
 
     <TextView
-        android:id="@+id/authorWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="By: Gahee, Max"
+        android:id="@+id/tvTitle"
+        android:layout_width="477dp"
+        android:layout_height="83dp"
+        android:layout_marginTop="56dp"
+        android:fontFamily="@font/mygame"
+        android:text="@string/apple_picker"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="60sp"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbWelcome" />
+
+    <ImageView
+        android:id="@+id/imgApple1"
+        android:layout_width="286dp"
+        android:layout_height="188dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/welcomeTitle"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/welcomeTitle"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeTitle"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/apple" />
+
+    <ImageView
+        android:id="@+id/imgApple2"
+        android:layout_width="286dp"
+        android:layout_height="188dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/apple" />
+
+    <TextView
+        android:id="@+id/tvAuthors"
+        android:layout_width="304dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="16dp"
+        android:text="By Max Zhang and Gahee Kim"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

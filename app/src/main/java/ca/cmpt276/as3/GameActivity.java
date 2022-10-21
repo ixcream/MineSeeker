@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.Toast;
 
 import ca.cmpt276.as3.model.Grid;
 import ca.cmpt276.as3.model.Options;
@@ -28,9 +27,6 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        options.setRows(7);
-        options.setColumns(10);
-        options.setTotalMines(20);
 
         grid = new Grid(options.getRows(), options.getColumns(), options.getTotalMines());
 
@@ -58,7 +54,6 @@ public class GameActivity extends AppCompatActivity {
                     TableLayout.LayoutParams.MATCH_PARENT,
                     1.0f));
 
-
             for (int columns = 0; columns < options.getColumns(); columns++) {
                 final int FINAL_ROW = rows;
                 final int FINAL_COLUMN = columns;
@@ -84,19 +79,21 @@ public class GameActivity extends AppCompatActivity {
     // Button helper method
     private void gridButtonClicked(int row, int column) {
         Button button = totalButtons[row][column];
-        Toast.makeText(getBaseContext(), "You pressed " + row + ", " + column, Toast.LENGTH_SHORT).show();
+        // TODO - get rid of this when hand in, was using this for testing
+        // and might again later
+        // Toast.makeText(getBaseContext(), "You pressed " + row + ", " + column, Toast.LENGTH_SHORT).show();
 
         // Lock button sizes
         lockButtonSize();
 
         // If isMine = true, show mine and decrement totalMines
         if (grid.cellAtCoord(row, column).isMine()) {
-            button.setBackgroundResource(R.drawable.box);
+            button.setBackgroundResource(R.drawable.apple);
 
             // Scale image properly
             int newWidth = button.getWidth();
             int newHeight = button.getHeight();
-            Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.box);
+            Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.apple);
             Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
             Resources resource = getResources();
             button.setBackground(new BitmapDrawable(resource, scaledBitmap));

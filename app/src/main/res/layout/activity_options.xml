@@ -10,4 +10,94 @@
         android:id="@+id/tbOptions"
         layout="@layout/toolbar" />
 
+    <RadioGroup
+        android:id="@+id/sizeOptions"
+        android:layout_width="280dp"
+        android:layout_height="216dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/boardTitle"
+        app:layout_constraintVertical_bias="0.18">
+
+        <RadioButton
+            android:id="@+id/size1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4 Rows x 6 Columns" />
+
+        <RadioButton
+            android:id="@+id/size2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="5 Rows x 10 Columns" />
+
+        <RadioButton
+            android:id="@+id/size3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="6 Rows x 15 Columns" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/minesOptions"
+        android:layout_width="285dp"
+        android:layout_height="217dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.876"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/minesTitle"
+        app:layout_constraintVertical_bias="0.17">
+
+        <RadioButton
+            android:id="@+id/Mines6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="6" />
+
+        <RadioButton
+            android:id="@+id/Mines10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="10" />
+
+        <RadioButton
+            android:id="@+id/Mines15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="15" />
+
+        <RadioButton
+            android:id="@+id/Mines20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="20" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/minesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number of Mines"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.678"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.237" />
+
+    <TextView
+        android:id="@+id/boardTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Board Size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.237" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

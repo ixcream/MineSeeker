@@ -34,10 +34,10 @@
         android:text="@string/main_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tbWelcome"
-        app:layout_constraintVertical_bias="0.826" />
+        app:layout_constraintVertical_bias="0.774" />
 
     <TextView
         android:id="@+id/tvTitle"
@@ -73,5 +73,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/apple" />
+
+    <TextView
+        android:id="@+id/tvAuthors"
+        android:layout_width="304dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="16dp"
+        android:text="By Max Zhang and Gahee Kim"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

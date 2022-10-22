@@ -67,11 +67,11 @@ View.OnClickListener {
             default:
                 break;
         }
-        saveData();
     };
 
     @Override
     public void onBackPressed() {
+        saveData();
         finish();
     };
 

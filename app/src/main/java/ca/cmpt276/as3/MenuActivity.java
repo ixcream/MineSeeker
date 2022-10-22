@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -19,9 +20,9 @@ import ca.cmpt276.as3.model.Options;
 /* Displays the UI for the Main Menu */
 public class MenuActivity extends AppCompatActivity implements
 View.OnClickListener {
-    Button btnPlay;
-    Button btnOptions;
-    Button btnHelp;
+    ImageButton btnPlay;
+    ImageButton btnOptions;
+    ImageButton btnHelp;
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String NAME = "options";
     Options options;

@@ -15,7 +15,8 @@ import com.google.gson.Gson;
 
 import ca.cmpt276.as3.model.Options;
 
-// Main Menu
+// Main Menu Class
+// Displays the UI for the Main Menu
 public class MenuActivity extends AppCompatActivity implements
 View.OnClickListener {
     Button btnPlay;
@@ -53,15 +54,12 @@ View.OnClickListener {
         Intent help = new Intent(MenuActivity.this, HelpActivity.class);
         switch (v.getId()) {
             case R.id.btnPlay:
-                Toast.makeText(this, "play", Toast.LENGTH_SHORT).show();
                 startActivity(play);
                 break;
             case R.id.btnOptions:
-                Toast.makeText(this, "options", Toast.LENGTH_SHORT).show();
                 startActivity(options);
                 break;
             case R.id.btnHelp:
-                Toast.makeText(this, "help", Toast.LENGTH_SHORT).show();
                 startActivity(help);
                 break;
             default:
@@ -79,6 +77,7 @@ View.OnClickListener {
         return new Intent(context, MenuActivity.class);
     }
 
+    // Saves data for next launch
     private void saveData() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

@@ -15,6 +15,8 @@ import com.daimajia.androidanimations.library.YoYo;
 import java.util.Timer;
 import java.util.TimerTask;
 
+// Welcome Activity
+// Displays UI for Welcome Screen
 public class MainActivity extends AppCompatActivity {
     private TextView title;
     private ImageView apple1;

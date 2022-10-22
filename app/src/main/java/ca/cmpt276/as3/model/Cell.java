@@ -1,5 +1,6 @@
 package ca.cmpt276.as3.model;
 
+// Cell Class
 // Stores a single Cell of a grid
 public class Cell {
     // Variables

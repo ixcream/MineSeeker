@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
 
+// Help Activity
 public class HelpActivity extends AppCompatActivity {
     private TextView tvAuthors;
 

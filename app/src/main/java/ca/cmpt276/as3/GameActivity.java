@@ -9,7 +9,9 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -36,6 +38,7 @@ public class GameActivity extends AppCompatActivity {
     int numOfMinesFound;
     Grid grid;
     AlertDialog.Builder winMsg;
+    MediaPlayer eatSound;
 
 
     @Override
@@ -132,6 +135,9 @@ public class GameActivity extends AppCompatActivity {
             minesFound.setText
                     ("Mines Found: " + numOfMinesFound +" of " + options.getTotalMines());
 
+            // Play sound
+            playSound();
+
             // Display winning message when user finds all mines
             if (numOfMinesFound == options.getTotalMines()) {
                 winMsg();
@@ -212,5 +218,25 @@ public class GameActivity extends AppCompatActivity {
                         finish();
                     }
                 }).show();
+    }
+
+    // Play sound method
+    private void playSound() {
+        eatSound = MediaPlayer.create(this, R.raw.minecraft_eat_sound);
+
+        eatSound.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                eatSound.start();
+            }
+        });
+        eatSound.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                eatSound.release();
+            }
+        });
+
+
     }
 }

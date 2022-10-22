@@ -7,6 +7,11 @@
     <string name="instructions">When playing Apple Picker, click on areas of the game to find your apples. If you don’t find an apple after clicking a button, you’ll start off a scan to count how many apples are in that button’s column and row. You can also click an apple to have it scan it’s row and column for other hidden apples.</string>
     <string name="about_the_authors">About the Authors</string>
     <string name="resources">Resources</string>
+    <string name="resourcesList">(<a href="https://www.reddit.com/r/Minecraft/comments/je4bgj/my_apple_orchard_apples_done_with_armor_stands/">Welcome Background</a>)
+        (<a href="https://www.youtube.com/watch?v=Fiaf796kieI">Eat Sound</a>)
+        (<a href="https://www.minecraft.net/en-us">Apple and Wood Block from Minecraft</a>)
+
+    </string>
     <string name="tvinstructions">Instructions</string>
     <string name="total_scans_0">Total Scans: 0</string>
     <string name="mines_found_0_of">Mines Found: 0 of</string>

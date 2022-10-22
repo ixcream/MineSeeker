@@ -11,6 +11,7 @@ import android.widget.TextView;
 /* Creates the UI when the user clicks Help */
 public class HelpActivity extends AppCompatActivity {
     private TextView tvAuthors;
+    private TextView resourcesList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,9 @@ public class HelpActivity extends AppCompatActivity {
 
         tvAuthors = findViewById(R.id.tvAuthors);
         tvAuthors.setMovementMethod(LinkMovementMethod.getInstance());
+
+        resourcesList = findViewById(R.id.tvResourceList);
+        resourcesList.setMovementMethod(LinkMovementMethod.getInstance());
 
     }
 }

@@ -36,6 +36,22 @@
         app:layout_constraintTop_toBottomOf="@+id/tvAuthors" />
 
     <TextView
+        android:id="@+id/tvResourceList"
+        android:layout_width="594dp"
+        android:layout_height="100dp"
+        android:lineSpacingExtra="2sp"
+        android:text="@string/resourcesList"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvResources" />
+
+    <TextView
         android:id="@+id/tvAbtTheAuthors"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

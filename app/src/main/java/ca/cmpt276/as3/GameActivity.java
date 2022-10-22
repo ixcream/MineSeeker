@@ -21,6 +21,9 @@ import com.daimajia.androidanimations.library.YoYo;
 import ca.cmpt276.as3.model.Grid;
 import ca.cmpt276.as3.model.Options;
 
+
+// Game Class
+// Creates the UI when the user clicks Play Game
 public class GameActivity extends AppCompatActivity {
     // Get Instance
     Options options = Options.getInstance();
@@ -41,6 +44,7 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         grid = new Grid(options.getRows(), options.getColumns(), options.getTotalMines());
 
+        // Find Id
         totalButtons = new Button[options.getRows()][options.getColumns()];
         totalScans = findViewById(R.id.totalScans);
         minesFound = findViewById(R.id.minesFound);
@@ -58,14 +62,15 @@ public class GameActivity extends AppCompatActivity {
         populateButtons();
     }
 
-    // Creates dynamic buttons
+    // Create dynamic buttons
     private void populateButtons() {
+        // Initialization
         TableLayout grid = findViewById(R.id.buttonGrid);
         numOfScans = 0;
         numOfMinesFound = 0;
         minesFound.setText("Mines Found: " + numOfMinesFound +" of " + options.getTotalMines());
 
-
+        // Set layout
         for (int rows = 0; rows < options.getRows(); rows++) {
             TableRow tableRow = new TableRow(this);
             grid.addView(tableRow);
@@ -103,7 +108,7 @@ public class GameActivity extends AppCompatActivity {
         // Lock button sizes
         lockButtonSize();
 
-        // If isMine = true, show mine and decrement totalMines
+        // If grid at [row][column] is a mine, show mine and decrement totalMines
         if (grid.cellAtCoord(row, column).isMine()) {
             button.setBackgroundResource(R.drawable.apple);
             numOfMinesFound++;
@@ -111,8 +116,10 @@ public class GameActivity extends AppCompatActivity {
             // Scale image properly
             int newWidth = button.getWidth();
             int newHeight = button.getHeight();
-            Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.apple);
-            Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
+            Bitmap originalBitmap = BitmapFactory.decodeResource
+                    (getResources(), R.drawable.apple);
+            Bitmap scaledBitmap = Bitmap.createScaledBitmap
+                    (originalBitmap, newWidth, newHeight, true);
             Resources resource = getResources();
             button.setBackground(new BitmapDrawable(resource, scaledBitmap));
 
@@ -122,7 +129,8 @@ public class GameActivity extends AppCompatActivity {
 
             // Update scanned cells number and mines found text
             scannedTextCell(row, column);
-            minesFound.setText("Mines Found: " + numOfMinesFound +" of " + options.getTotalMines());
+            minesFound.setText
+                    ("Mines Found: " + numOfMinesFound +" of " + options.getTotalMines());
 
             // Display winning message when user finds all mines
             if (numOfMinesFound == options.getTotalMines()) {
@@ -131,7 +139,8 @@ public class GameActivity extends AppCompatActivity {
         }
         // Else, scan cell and display # of mines in row/column
         else {
-            button.setText(Integer.toString(grid.cellAtCoord(row, column).getNumberOfHiddenMines()));
+            button.setText
+                    (Integer.toString(grid.cellAtCoord(row, column).getNumberOfHiddenMines()));
 
             // Update total scan
             if (!grid.cellAtCoord(row, column).isScanned()) {
@@ -168,7 +177,7 @@ public class GameActivity extends AppCompatActivity {
                 totalButtons[row][i].setText
                         (Integer.toString(grid.cellAtCoord(row, i).getNumberOfHiddenMines()));
             }
-            btnAnimation(totalButtons[row][i]);
+            btnFlash(totalButtons[row][i]);
         }
 
         // Go through entire row
@@ -177,16 +186,18 @@ public class GameActivity extends AppCompatActivity {
                 totalButtons[i][column].setText
                         (Integer.toString(grid.cellAtCoord(i, column).getNumberOfHiddenMines()));
             }
-            btnAnimation(totalButtons[i][column]);
+            btnFlash(totalButtons[i][column]);
         }
     }
 
-    private void btnAnimation(Button btn) {
+    // Makes button selected rows/column flash
+    private void btnFlash(Button btn) {
         YoYo.with(Techniques.Flash)
-                .duration(200)
+                .duration(300)
                 .playOn(btn);
     }
 
+    // Dialog message when user finds all mines
     private void winMsg() {
         // Allow user to exit by clicking outside of alert box
         winMsg.setCancelable(true);

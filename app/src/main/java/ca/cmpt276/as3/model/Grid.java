@@ -2,6 +2,7 @@ package ca.cmpt276.as3.model;
 
 import java.util.Random;
 
+// Grid Class
 // Stores a grid of Cells
 public class Grid {
     private final int row;

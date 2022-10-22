@@ -2,8 +2,9 @@ package ca.cmpt276.as3.model;
 
 import android.graphics.Path;
 
-// Options Class stores settings from OptionsActivity for
-// use in GameActivity
+// Options Class
+// Stores settings using a Singleton from OptionsActivity
+// for use in GameActivity
 public class Options {
     // Variables
     private int rows;

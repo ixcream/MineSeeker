@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,7 +14,6 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import com.google.gson.Gson;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -47,6 +45,9 @@ public class GameActivity extends AppCompatActivity {
         totalScans = findViewById(R.id.totalScans);
         minesFound = findViewById(R.id.minesFound);
         winMsg = new AlertDialog.Builder(this);
+
+        // If user clicks out of alert, return to Main Menu
+        winMsg.setOnDismissListener(dialog -> finish());
 
         // Toolbar
         Toolbar toolbar = findViewById(R.id.tbGame);
@@ -98,10 +99,6 @@ public class GameActivity extends AppCompatActivity {
     // Button helper method
     private void gridButtonClicked(int row, int column) {
         Button button = totalButtons[row][column];
-
-        // TODO - get rid of this when hand in, was using this for testing
-        // and might again later
-        // Toast.makeText(getBaseContext(), "You pressed " + row + ", " + column, Toast.LENGTH_SHORT).show();
 
         // Lock button sizes
         lockButtonSize();
@@ -168,7 +165,8 @@ public class GameActivity extends AppCompatActivity {
         // Go through entire column
         for (int i = 0; i < options.getColumns(); i++) {
             if (grid.cellAtCoord(row, i).isScanned()) {
-                totalButtons[row][i].setText(Integer.toString(grid.cellAtCoord(row, i).getNumberOfHiddenMines()));
+                totalButtons[row][i].setText
+                        (Integer.toString(grid.cellAtCoord(row, i).getNumberOfHiddenMines()));
             }
             btnAnimation(totalButtons[row][i]);
         }
@@ -176,7 +174,8 @@ public class GameActivity extends AppCompatActivity {
         // Go through entire row
         for (int i = 0; i < options.getRows(); i++) {
             if (grid.cellAtCoord(i, column).isScanned()) {
-                totalButtons[i][column].setText(Integer.toString(grid.cellAtCoord(i, column).getNumberOfHiddenMines()));
+                totalButtons[i][column].setText
+                        (Integer.toString(grid.cellAtCoord(i, column).getNumberOfHiddenMines()));
             }
             btnAnimation(totalButtons[i][column]);
         }
@@ -189,7 +188,11 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void winMsg() {
-        winMsg.setTitle("Congratulations")
+        // Allow user to exit by clicking outside of alert box
+        winMsg.setCancelable(true);
+
+        // Alert display
+         winMsg.setTitle("Congratulations")
                 .setMessage("You've found all the apples! Time to chomp!")
                 .setIcon(R.drawable.apple)
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -199,8 +202,4 @@ public class GameActivity extends AppCompatActivity {
                     }
                 }).show();
     }
-
-
-
-
 }

@@ -25,7 +25,7 @@ import ca.cmpt276.as3.model.Options;
 
 
 // Game Class
-// Creates the UI when the user clicks Play Game
+/* Creates the UI when the user clicks Play Game */
 public class GameActivity extends AppCompatActivity {
     // Get Instance
     Options options = Options.getInstance();

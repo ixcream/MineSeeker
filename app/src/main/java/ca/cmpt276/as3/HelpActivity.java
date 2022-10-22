@@ -8,6 +8,7 @@ import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
 
 // Help Activity
+/* Creates the UI when the user clicks Help */
 public class HelpActivity extends AppCompatActivity {
     private TextView tvAuthors;
 

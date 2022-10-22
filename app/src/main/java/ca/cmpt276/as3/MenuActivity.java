@@ -16,7 +16,7 @@ import com.google.gson.Gson;
 import ca.cmpt276.as3.model.Options;
 
 // Main Menu Class
-// Displays the UI for the Main Menu
+/* Displays the UI for the Main Menu */
 public class MenuActivity extends AppCompatActivity implements
 View.OnClickListener {
     Button btnPlay;

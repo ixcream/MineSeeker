@@ -14,7 +14,7 @@ import android.widget.Toast;
 import ca.cmpt276.as3.model.Options;
 
 // Options class
-// Creates Options Menu for user to set board size and number of
+/* Creates Options Menu for user to set board size and number of */
 public class OptionsActivity extends AppCompatActivity {
     // Get Instance
     Options options = Options.getInstance();
